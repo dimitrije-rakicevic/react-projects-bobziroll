@@ -1,0 +1,64 @@
+/* Overlay koji zatamnjuje pozadinu */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+  }
+  
+  /* Glavni modal */
+  .dialog-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    z-index: 1001;
+  }
+  
+  /* Naslov */
+  .dialog-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Opis */
+  .dialog-description {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  /* Dugmad */
+  .dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+  
+  .dialog-cancel {
+    background: transparent;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 2px, rgba(0, 0, 0, 0.23) 0px 3px 5px;
+  }
+  
+  .dialog-confirm {
+    background: rgb(228, 37, 37);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 2px, rgba(0, 0, 0, 0.23) 0px 3px 5px;
+  }
+  

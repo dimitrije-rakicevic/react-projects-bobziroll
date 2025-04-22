@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  font-family: Inter, 'sans-serif';
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to left, rgb(165, 0, 241), rgb(59, 0, 114) 100%);
+}
+
+header > * {
+  font-family: Tektur, 'sans-serif';
+  font-weight: 600;
+  color: white;
+  flex-wrap: nowrap;
+}
+
+.meme-logo {
+  width: 50px;
+  margin: 15px 20px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.start-page {
+  padding-top: 20px;
+  background-color: #0d0c5c;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  min-width: 500px;
+  max-width: 800px;
+}
+
+.start-page > * {
+  margin: 10px 20px
+}
+
+.inputs-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn-new-image {
+  background: linear-gradient(to left, rgb(165, 0, 241), rgb(98, 0, 143) 100%);
+  font-size: 20px;
+  color:white;
+  border-radius: 7px;
+  padding: 10px;
+  justify-content:center;
+  border: none;
+}
+.btn-new-image:hover {
+  opacity: 0.75;
+}
+
+.top-text-div, .bottom-text-div {
+  display: flex;
+  flex-direction: column;
+  width:45%;
+  > label {
+    color: white;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 1.1rem
+  }
+}
+
+input {
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  background-color: #575786;
+  color: white;
+}
+input::placeholder {
+  color: rgb(190, 190, 190);
+}
+
+.meme {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.meme > img {
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+}
+.meme span {
+  position: absolute;
+  text-align: center;
+  margin-block: 15px;
+  padding-inline: 5px;
+  font-family: impact, sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow:
+      2px 2px 0 #000,
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      0 2px 0 #000,
+      2px 0 0 #000,
+      0 -2px 0 #000,
+      -2px 0 0 #000,
+      2px 2px 5px #000;
+
+}
+
+.top {
+  top: 0
+}
+
+.bottom {
+  bottom: 0;
+}
