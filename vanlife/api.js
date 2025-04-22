@@ -8,8 +8,7 @@ import {
     query, 
     where
 } from "firebase/firestore/lite"
-
-const firebaseConfig = JSON.parse(process.env.REACT_APP_FIREBASE_CONFIG_JSON);
+import firebaseConfig from "./config";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
