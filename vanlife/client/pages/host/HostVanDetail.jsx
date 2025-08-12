@@ -3,6 +3,7 @@ import { Outlet, useParams } from "react-router-dom"
 import { NavLink, Link } from "react-router-dom"
 import { getVan } from "../../api"
 
+
 export default function HostVanDetail() { 
     const [van, setVan] = React.useState(null)
     const [loading, setLoading] = React.useState(false)
@@ -16,11 +17,12 @@ export default function HostVanDetail() {
     }
 
     React.useEffect(() => {
-        async function loadVans() {
+        async function loadVan() {
             setLoading(true)
             try {
                 const data = await getVan(id)
                 setVan(data)
+                console.log(data)
             } catch (err) {
                 setError(err)
             } finally {
@@ -28,7 +30,7 @@ export default function HostVanDetail() {
             }
         }
 
-        loadVans()
+        loadVan()
     }, [id])
 
     if (loading) {
@@ -42,7 +44,7 @@ export default function HostVanDetail() {
     const vanElem = van ? (
         <>
             <div className="host-van-container">
-            <img src={van.imageUrl} alt='name' />
+            <img src={`http://localhost:3000${van.imageUrl}`} alt='name' />
                 <div className="host-van-info">
                     <div className={`type ${van.type}`}>{van.type}</div>
                     <h1>{van.name}</h1>
@@ -57,6 +59,7 @@ export default function HostVanDetail() {
             {van ? (
                 <>
                     <Link style={{textDecoration: 'underline'}} to='..' relative="path">&larr; Back to all vans</Link>
+                    <Link className="edit-van">✎ Edit</Link>
                     {vanElem}
                     <nav className="host-van-detail-nav">
                         <NavLink style={({isActive}) => isActive ? activeStyle : {textDecoration: 'none'}} to="." end>Details</NavLink>

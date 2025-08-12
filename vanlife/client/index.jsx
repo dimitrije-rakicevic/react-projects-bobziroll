@@ -12,13 +12,14 @@ import Reviews from './pages/host/Reviews';
 import Income from './pages/host/Income';
 import HostVans from './pages/host/HostVans';
 import HostVanDetail from './pages/host/HostVanDetail';
-import './server'
 import HostVanDetails from './pages/host/hostVan/HostVanDetails';
 import HostVanPricing from './pages/host/hostVan/HostVanPricing';
 import HostVanPhotos from './pages/host/hostVan/HostVanPhotos';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import AuthRequired from './components/AuthRequired';
+import Register from './pages/Register';
+import { CreateVanForm } from './pages/host/CreateVanForm';
 
 function App() {
   return (
@@ -31,12 +32,13 @@ function App() {
             <Route path="/vans" element={<Vans />} />
             <Route path="/login" element={<Login />} />
             <Route path="/vans/:id" element={<VanDetail />} />
-            <Route path="login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route element={<AuthRequired />}>
               <Route path="host" element={<HostLayout />}>
                 <Route index element={<Dashboard />} />
                 <Route path="income" element={<Income />} />
                 <Route path="vans" element={<HostVans />} />
+                <Route path="create" element={<CreateVanForm />} />
                 <Route path="vans/:id" element={<HostVanDetail />}>
                   <Route index element={<HostVanDetails />} />
                   <Route path="pricing" element={<HostVanPricing />} />

@@ -1,6 +1,6 @@
 import React from "react"
-import { useNavigate, useLocation } from "react-router-dom"
-import { loginUser } from "../api"
+import { useNavigate, useLocation, NavLink } from "react-router-dom"
+import { login } from "../api"
 
 export default function Login() {
     const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" })
@@ -16,11 +16,10 @@ export default function Login() {
     function handleSubmit(e) {
         e.preventDefault()
         setStatus('submitting')
-        loginUser(loginFormData)
+        login(loginFormData)
             .then(data => {
                 setError(null)
-                localStorage.setItem('loggedIn', true)
-                localStorage.setItem('userId', '123')
+                localStorage.setItem('token', data.token)
                 navigate(from, {replace: true})
             })
             .catch(err => {
@@ -68,7 +67,9 @@ export default function Login() {
                     value={loginFormData.password}
                 />
                 <button disabled={status === "submitting"}>
-                    {status === "submitting" ? "Logging in..." : "Log in"}</button>
+                    {status === "submitting" ? "Logging in..." : "Log in"}
+                </button>
+                <h4 className="create-account">Don't have an account? <NavLink to="/register">Create account here</NavLink></h4>
             </form>
         </div>
     )

@@ -2,11 +2,11 @@ import { Outlet, Navigate, useLocation } from "react-router-dom"
 
 export default function AuthRequired() {
 
-    const isLoggedIn = localStorage.getItem("loggedIn")
+    const token = localStorage.getItem("token")
     const location = useLocation()
     console.log(location)
 
-    if (!isLoggedIn) {
+    if (!token) {
         return <Navigate 
             to="/login" 
             state={{

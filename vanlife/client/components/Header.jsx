@@ -19,14 +19,14 @@ export default function Header() {
     };
 
     const handleLogout = () => {
-        if (localStorage.loggedIn) {
-            localStorage.removeItem("loggedIn");
-            localStorage.removeItem("userId");
+        console.log(localStorage.getItem('token'))
+        if (localStorage.token) {
+            localStorage.removeItem("token");
         }
     };
 
     const handleLogin = () => {
-        localStorage.loggedIn && message.error('You are already logged in.', 2000);
+        localStorage.token && message.error('You are already logged in.', 2000);
     };
 
     return (
@@ -51,12 +51,12 @@ export default function Header() {
                     className='profile-logo'
                     style={({ isActive }) => isActive ? activeStyle : null}
                     onClick={handleLogin}
-                    to={localStorage.loggedIn ? null : '/login'}
+                    to={localStorage.token ? null : '/login'}
                 >
                     <FaRegUserCircle />
                 </NavLink>
 
-                {localStorage.loggedIn && (
+                {localStorage.token && (
                     <button className='logout-icon' onClick={() => setLogoutPromptOpen(true)}>
                         <BsFillXCircleFill />
                         <span className="log-out">Log out</span>

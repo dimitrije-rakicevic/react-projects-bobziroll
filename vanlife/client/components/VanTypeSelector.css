@@ -1,0 +1,18 @@
+.van-type-select {
+    display: flex;
+}
+
+.van-type.simple.active {
+    background-color: #E17654;
+    color: white;
+}
+
+.van-type.rugged.active {
+    background-color: #115E59;
+    color: white;
+}
+
+.van-type.luxury.active {
+    background-color: #161616;
+    color: white;
+}

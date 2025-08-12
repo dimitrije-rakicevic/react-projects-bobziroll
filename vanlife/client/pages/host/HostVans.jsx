@@ -1,6 +1,7 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { getHostVans } from "../../api"
+import { IoAdd, IoTrashOutline } from "react-icons/io5";
 
 export default function HostVans(props) {
 
@@ -24,9 +25,9 @@ export default function HostVans(props) {
     }, [])
 
     const vansElems = vans.map(van => (   
-            <Link key={van.id} style={{ textDecoration: 'none' }} to={`${van.id}`}>
+            <Link key={van.id} style={{ textDecoration: 'none' }} to={(props.linkToAll ? "vans/" : "") + `${van.id}`}>
                 <div className="host-van-container">
-                    <img src={van.imageUrl} alt='name' />
+                    <img src={`http://localhost:3000${van.imageUrl}`} alt='name' />
                     <div className="host-van-info">
                         <h2>{van.name}</h2>
                         <p>${van.price}/day</p>
@@ -38,7 +39,15 @@ export default function HostVans(props) {
     
     return (
         <div className="host-vans">
-            <h1>Your listed vans{props.linkToAll && <Link to={props.linkToAll}>View all</Link>}</h1>
+            <h1 style={{justifyContent: props.linkToAll && "space-between", alignItems: 'center'}}>
+                Your listed vans
+                {props.linkToAll ? 
+                <Link className="view-all" to={props.linkToAll}>View all</Link> : 
+                <>
+                    <button className="add-new-van"><IoAdd />Add</button>
+                    <button className="delete-van"><IoTrashOutline />Delete</button>
+                </>}
+            </h1>
             {vansElems.length !== 0 ? vansElems : (<h1>...Loading</h1>)}
         </div>
     )

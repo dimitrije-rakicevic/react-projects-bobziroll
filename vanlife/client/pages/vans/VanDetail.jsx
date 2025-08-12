@@ -2,6 +2,9 @@ import React from "react"
 import { Link, useParams, useLocation } from "react-router-dom"
 import { getVan } from "../../api"
 
+import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { FaArrowAltCircleRight } from "react-icons/fa";
+
 export default function VanDetail() {
     const [van, setVan] = React.useState(null)
     const [loading, setLoading] = React.useState(false)
@@ -9,8 +12,10 @@ export default function VanDetail() {
     const { id } = useParams()
     const location = useLocation()
 
+    const [imageIndex, setImageIndex] = React.useState(1)
+
     React.useEffect(() => {
-        async function loadVans() {
+        async function loadVan() {
             setLoading(true)
             try {
                 const data = await getVan(id)
@@ -21,8 +26,12 @@ export default function VanDetail() {
                 setLoading(false)
             }
         }
-        loadVans()
+        loadVan()
     }, [id])
+
+    React.useEffect(() => {
+        
+    })
     
     if (loading) {
         return <h1>Loading...</h1>
@@ -34,6 +43,12 @@ export default function VanDetail() {
 
     const search = location.state?.search || "";
     const type = location.state?.type || "all";
+
+    const images = van ? van.vanImages ? van.vanImages.map(image => {
+        return image.path
+    }) : "" : ""
+
+    console.log(van)
     
     return (
         <div className="van-detail-container">
@@ -45,7 +60,11 @@ export default function VanDetail() {
             
             {van && (
                 <div className="van-detail">
-                    <img src={van.imageUrl} />
+                    <div className="van-image-slider">
+                        <div><FaArrowAltCircleLeft /></div>
+                        <img src={`http://localhost:3000${images[imageIndex]}`}></img>
+                        <div><FaArrowAltCircleRight /></div>
+                    </div>
                     <i className={`van-type ${van.type} selected`}>
                         {van.type}
                     </i>
