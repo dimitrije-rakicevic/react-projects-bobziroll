@@ -15,7 +15,7 @@ import { requireAuth } from '../middleware/authMiddleware.js'
 const router = express.Router()
 
 router.get('/vans', requireAuth ,getHostVans)
-router.put('/vans/:id', requireAuth, updateVan)
+router.put('/vans/:id', requireAuth, upload.array("newImages", 5), updateVan)
 router.delete('/vans/:id', requireAuth, deleteVan)
 router.get('/reviews', requireAuth ,getReviews)
 router.get('/income', requireAuth ,getIncome)

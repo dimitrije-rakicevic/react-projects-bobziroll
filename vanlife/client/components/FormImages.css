@@ -1,0 +1,60 @@
+.form-image-wrapper .form-image {
+    width: 100px;
+    height: 100px;
+    aspect-ratio: 1/1;
+    justify-self: center;
+}
+.form-image-wrapper button {
+    position: relative;
+    top: -62%;
+    left: 0;
+    background: none;
+    border: none;
+    aspect-ratio: 1/1;
+    border-radius: 45%;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(245, 1, 1, 0.7);
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: fit-content;
+    padding: 2px;
+    margin: 0
+}
+.form-image-wrapper button:hover {
+    background-color: rgb(255, 0, 0);
+    color:rgb(255, 255, 255)
+}
+.form-image-wrapper {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 100px;
+    border: 1.5px solid rgb(172, 172, 172);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.form-images-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+.form-images-grid .add-btn {
+    width: 70px;
+    margin-left: 10px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    align-content: center;
+    text-align: center;
+    align-self: center;
+    font-size: 54px;
+    background-color: rgba(201, 107, 0, 0.788);
+    color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    cursor: pointer;
+    transition: all 100ms linear;
+}
+.form-images-grid .add-btn:hover {
+    background-color: rgba(161, 64, 0, 0.952);
+}

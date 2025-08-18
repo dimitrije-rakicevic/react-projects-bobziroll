@@ -38,7 +38,6 @@ function App() {
                 <Route index element={<Dashboard />} />
                 <Route path="income" element={<Income />} />
                 <Route path="vans" element={<HostVans />} />
-                <Route path="create" element={<CreateVanForm />} />
                 <Route path="vans/:id" element={<HostVanDetail />}>
                   <Route index element={<HostVanDetails />} />
                   <Route path="pricing" element={<HostVanPricing />} />

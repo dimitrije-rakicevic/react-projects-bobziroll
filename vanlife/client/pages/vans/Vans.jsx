@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, useSearchParams } from "react-router-dom"
 import { getVans } from "../../api"
+import noimage from '../../assets/images/no-image.jpeg'
 
 export default function Vans() {
     const [vans, setVans] = React.useState([])
@@ -31,7 +32,7 @@ export default function Vans() {
     const vanElements = displayedVans && displayedVans.map(van => (
         <div key={van.id} className="van-tile">
             <Link to={`/vans/${van.id}`} state={{ search: `?${searchParams.toString()}`, type: typeFilter }}>
-                <img src={`http://localhost:3000${van.imageUrl}`} />
+                <img src={van.imageUrl ? `http://localhost:3000${van.imageUrl}` : noimage } alt='no-image'/>
                 <div className="van-info">
                     <h3>{van.name}</h3>
                     <p>${van.price}<span>/day</span></p>

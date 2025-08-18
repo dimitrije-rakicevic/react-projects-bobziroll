@@ -5,6 +5,8 @@ import { getVan } from "../../api"
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 
+import noimage from '../../assets/images/no-image.jpeg'
+
 export default function VanDetail() {
     const [van, setVan] = React.useState(null)
     const [loading, setLoading] = React.useState(false)
@@ -12,7 +14,7 @@ export default function VanDetail() {
     const { id } = useParams()
     const location = useLocation()
 
-    const [imageIndex, setImageIndex] = React.useState(1)
+    const [imageIndex, setImageIndex] = React.useState(0)
 
     React.useEffect(() => {
         async function loadVan() {
@@ -41,14 +43,25 @@ export default function VanDetail() {
         return <h1>There was an error: {error.message}</h1>
     }
 
+
     const search = location.state?.search || "";
     const type = location.state?.type || "all";
 
     const images = van ? van.vanImages ? van.vanImages.map(image => {
         return image.path
     }) : "" : ""
+    
+    const rightSwipe = () => {
+        if(imageIndex < images.length - 1)
+            setImageIndex(prev => prev + 1)
+    }
 
-    console.log(van)
+    const leftSwipe = () => {
+        if(imageIndex > 0)
+            setImageIndex(prev => prev - 1)
+    }
+
+    console.log(imageIndex)
     
     return (
         <div className="van-detail-container">
@@ -61,9 +74,9 @@ export default function VanDetail() {
             {van && (
                 <div className="van-detail">
                     <div className="van-image-slider">
-                        <div><FaArrowAltCircleLeft /></div>
-                        <img src={`http://localhost:3000${images[imageIndex]}`}></img>
-                        <div><FaArrowAltCircleRight /></div>
+                        <div>{imageIndex > 0 ? <FaArrowAltCircleLeft onClick={leftSwipe}/> : ""}</div>
+                        <img src={van.imageUrl ? `http://localhost:3000${images[imageIndex]}` : noimage}></img>
+                        <div>{imageIndex < images.length - 1 ? <FaArrowAltCircleRight onClick={rightSwipe}/> : ""}</div>
                     </div>
                     <i className={`van-type ${van.type} selected`}>
                         {van.type}

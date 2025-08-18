@@ -18,9 +18,7 @@ export const getVan = async (req, res) => {
         const van = await prisma.van.findUnique({
             where: { id: parseInt(id) },
             include: { 
-                vanImages: {
-                    select: { path: true}
-            }}
+                vanImages: true }
         })
 
         if (!van) {

@@ -30,10 +30,10 @@ model Van {
   name        String
   price       Int
   description String
-  imageUrl    String
+  imageUrl    String?
   type        String
   hostId      Int
-  host        User      @relation(fields: [hostId], references: [id])
+  host        User      @relation(fields: [hostId], references: [id], onDelete: Cascade)
 
   vanImages   Image[]
   reviews     Review[]
@@ -43,7 +43,7 @@ model Image {
   id          Int       @id @default(autoincrement())
   path        String
   vanId       Int
-  van         Van       @relation(fields: [vanId], references: [id])
+  van         Van       @relation(fields: [vanId], references: [id], onDelete: Cascade)
 }
 
 model Review {

@@ -67,7 +67,7 @@ export const getIncomes = async (req, res) => {
 }
 
 export const createVan = async (formData, token) => {
-    const res = await fetch("http://localhost:3000/api/host/vans", {
+    const res = await fetch(`${API_URL}/host/vans`, {
         method: "POST",
         headers: {
             Authorization: `Bearer ${token}`,
@@ -78,7 +78,35 @@ export const createVan = async (formData, token) => {
     if (!res.ok) {
         throw new Error('Failed to create van')
     }
+    return res
+}
 
-    const data = res.json()
-    console.log(data)
+export const deleteVan = async (id, token) => {
+    const res = await fetch(`${API_URL}/host/vans/${id}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    })
+
+    if (!res.ok) {
+        throw new Error('Failed to delete van')
+    }
+
+    return res
+}
+
+export const updateVan = async (id, formData, token) => {
+    const res = await fetch(`${API_URL}/host/vans/${id}`, {
+        method: 'PUT',
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        body: formData,
+    })
+    if(!res.ok) {
+        throw new Error("Failed to update van")
+    }
+
+    return res
 }
